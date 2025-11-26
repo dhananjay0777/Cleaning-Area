@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CleanCity - Municipal Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div id="toast">Message here</div>
+
+  <div id="authSection" class="auth-container">
+    
+    <div id="loginBox" class="auth-card fade-in">
+      <div class="brand-logo">
+        <h1>Clean<span>City</span></h1>
+        <p class="subtitle">Municipal Portal Login</p>
+      </div>
+      <div class="form-group">
+        <label>Username / Email</label>
+        <input id="loginEmail" type="text" placeholder="citizen@example.com">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input id="loginPass" type="password" placeholder="••••••••">
+      </div>
+      <button class="btn-primary" onclick="loginUser()">Sign In</button>
+      <div class="link-text">
+        Don't have an account? <a href="#" onclick="showRegister()">Create Account</a>
+      </div>
+    </div>
+
+    <div id="registerBox" class="auth-card hidden fade-in">
+      <div class="brand-logo">
+        <h1>Clean<span>City</span></h1>
+        <p class="subtitle">Join the Community</p>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input id="regEmail" type="email" placeholder="citizen@example.com">
+      </div>
+      <div class="form-group">
+        <label>Create Password</label>
+        <input id="regPass" type="password" placeholder="••••••••">
+      </div>
+      <button class="btn-primary" onclick="registerUser()">Register</button>
+      <div class="link-text">
+        Already have an account? <a href="#" onclick="showLogin()">Sign In</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="appSection" class="hidden fade-in">
+    <header class="app-header">
+      <div class="header-content">
+        <div class="brand-logo header-brand">
+          <h1>Clean<span>City</span></h1>
+        </div>
+        <div class="header-actions">
+          <span id="userDisplay" class="user-name-display">User</span>
+          <button class="logout-btn" onclick="logoutUser()">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-container">
+      
+      <div class="report-card" id="reportFormCard">
+        <div class="report-header">
+          <div class="icon-circle">+</div>
+          <div>
+            <h2>New Report</h2>
+            <p class="sub-text">Spot a dirty area? Let us know.</p>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <input id="areaName" type="text" placeholder="What's the issue? (e.g. Overflowing Bin)">
+        </div>
+        <div class="form-group">
+          <input id="areaLoc" type="text" placeholder="Exact Location (e.g. Central Park Gate 2)">
+        </div>
+        
+        <div class="file-upload-wrapper">
+          <label for="areaPic" class="file-upload-label" id="fileLabel">
+            <span>📷 Click to upload photo evidence</span>
+          </label>
+          <input id="areaPic" type="file" accept="image/*" onchange="updateFileLabel(this)">
+        </div>
+
+        <button class="btn-primary" onclick="submitArea()">Submit Report</button>
+      </div>
+
+      <div class="feed-controls">
+        <button id="tabAll" class="tab-btn active" onclick="showTab('all')">Community Reports</button>
+        <button id="tabMy" class="tab-btn" onclick="showTab('my')">My Reports</button>
+      </div>
+
+      <div id="feedContainer" class="report-feed">
+        </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
